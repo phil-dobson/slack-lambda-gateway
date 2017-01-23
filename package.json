@@ -1,0 +1,19 @@
+{
+  "name": "slack-async-lambda",
+  "version": "1.0.0",
+  "description": "Node.js Lambda function intended to be triggered by a Slack slash command that asynchronously invokes a second, long running function",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phil-dobson/slack-lambda-gateway.git"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.7.27"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Phil Dobson",
+  "license": "MIT"
+}
