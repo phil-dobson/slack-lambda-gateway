@@ -1,5 +1,6 @@
 # Slack-Lambda Gateway
 [![Build Status](https://travis-ci.org/phil-dobson/slack-lambda-gateway.svg?branch=master)](https://travis-ci.org/phil-dobson/slack-lambda-gateway)
+[![Coverage Status](https://coveralls.io/repos/github/phil-dobson/slack-lambda-gateway/badge.svg?branch=master)](https://coveralls.io/github/phil-dobson/slack-lambda-gateway?branch=master)
 
 ## Synopsis
 A Node.js Lambda function intended to be triggered by Slack slash commands hitting AWS API Gateway endpoints.

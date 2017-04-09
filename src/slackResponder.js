@@ -28,7 +28,7 @@ module.exports.respondWithSuccessToSlack = function (lambdaFunction, callback) {
 };
 
 module.exports.respondWithFailureToSlack = function (lambdaFunction, error, callback) {
-    respondToSlack('500', `Lambda function ${lambdaFunction || ""} could not be started${error != null ? ": " + (error.message || error) : ' due to an unknown error'}`, callback);
+    respondToSlack('500', `Lambda function ${lambdaFunction != null ? lambdaFunction + " " : ""}could not be started${error != null ? ": " + (error.message || error) : ' due to an unknown error'}`, callback);
 };
 
 function respondToSlack(statusCode, message, callback) {

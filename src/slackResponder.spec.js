@@ -69,6 +69,14 @@ describe("Responds back to Slack using the Lambda callback", function () {
         assertCallbackCalled(callback, "500", `Lambda function ${LAMBDA_TO_STRING} could not be started due to an unknown error`);
     });
 
+    it(`Responds with failure for null lambda function`, function () {
+        // when:
+        slackResponder.respondWithFailureToSlack(null, null, callback);
+
+        // then:
+        assertCallbackCalled(callback, "500", `Lambda function could not be started due to an unknown error`);
+    });
+
     afterEach(function () {
         td.reset();
     });
