@@ -1,7 +1,7 @@
 {
-  "name": "slack-async-lambda",
+  "name": "slack-lambda-gateway",
   "version": "1.0.0",
-  "description": "Node.js Lambda function intended to be triggered by a Slack slash command that asynchronously invokes a second, long running function",
+  "description": "Node.js Lambda function intended to be triggered by a Slack slash command that asynchronously invokes a second, longer running function",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -10,9 +10,17 @@
   "dependencies": {
     "aws-sdk": "^2.7.27"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "testdouble": "^2.0.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:babel-core/register ./**/*_spec.js"
   },
   "author": "Phil Dobson",
   "license": "MIT"
