@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 "use strict";
-const lambdaFunction = require("./lambdaFunction");
+const lambdaFunction = require("./LambdaFunction");
 
 module.exports = {
     
