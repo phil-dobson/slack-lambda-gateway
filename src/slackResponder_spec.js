@@ -23,9 +23,9 @@
 "use strict";
 const slackResponder = require("./slackResponder");
 const LambdaFunction = require("./LambdaFunction");
-const assert = require("../node_modules/chai").assert;
-const expect = require("../node_modules/chai").expect;
-const td = require("../node_modules/testdouble");
+const assert = require("chai").assert;
+const expect = require("chai").expect;
+const td = require("testdouble");
 
 const LAMBDA_TO_STRING = "lambdaToString";
 const ERROR_MESSAGE = "errorMessage";

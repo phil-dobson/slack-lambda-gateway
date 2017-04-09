@@ -25,8 +25,8 @@ const REGION = "REGION";
 const FUNCTION_NAME = "FUNCTION_NAME";
 
 const lambdaFunctionFactory = require("./lambdaFunctionFactory");
-const assert = require("../node_modules/chai").assert;
-const expect = require("../node_modules/chai").expect;
+const assert = require("chai").assert;
+const expect = require("chai").expect;
 
 describe("Creates Lambda Functions", function () {
 

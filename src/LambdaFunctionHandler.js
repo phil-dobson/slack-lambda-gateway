@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 "use strict";
-const aws = require("../node_modules/aws-sdk");
+const aws = require("aws-sdk");
 const lambdaFunctionFactory = require("./lambdaFunctionFactory");
 const slackResponder = require("./slackResponder");
 

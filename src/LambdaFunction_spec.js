@@ -22,7 +22,7 @@
 
 "use strict";
 const LambdaFunction = require("./LambdaFunction");
-const assert = require("../node_modules/chai").assert;
+const assert = require("chai").assert;
 
 describe("Lambda Function", function () {
     describe("toString()", function () {

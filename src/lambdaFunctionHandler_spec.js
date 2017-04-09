@@ -27,8 +27,8 @@ const PATH = "path";
 const event = {path: PATH};
 const ERROR = new Error("test");
 
-const td = require("../node_modules/testdouble");
-const assert = require("../node_modules/chai").assert;
+const td = require("testdouble");
+const assert = require("chai").assert;
 
 let mockLambdaFunctionFactory;
 let mockSlackResponder;
@@ -53,7 +53,7 @@ describe("Lambda Function Handler", function () {
 
     describe("No internal errors", function() {
         beforeEach(function() {
-            td.replace("../node_modules/aws-sdk", {Lambda: MockAwslambdaConstructor});
+            td.replace("aws-sdk", {Lambda: MockAwslambdaConstructor});
             unit = require("./lambdaFunctionHandler");
             td.when(mockLambdaFunctionFactory.createFromPath(PATH)).thenReturn(mockLambdaFunction);
         });
@@ -111,7 +111,7 @@ describe("Lambda Function Handler", function () {
 
         it("Failure creating Lambda Invoker", function () {
             //setup:
-            td.replace("../node_modules/aws-sdk", {Lambda: throwError});
+            td.replace("aws-sdk", {Lambda: throwError});
             unit = require("./lambdaFunctionHandler");
 
             td.when(mockLambdaFunctionFactory.createFromPath(PATH)).thenReturn(mockLambdaFunction);
@@ -125,7 +125,7 @@ describe("Lambda Function Handler", function () {
 
         it("Failure invoking Lambda Invoker", function () {
             //setup:
-            td.replace("../node_modules/aws-sdk", {Lambda: MockAwslambdaConstructor});
+            td.replace("aws-sdk", {Lambda: MockAwslambdaConstructor});
             unit = require("./lambdaFunctionHandler");
 
             td.when(mockLambdaFunctionFactory.createFromPath(PATH)).thenReturn(mockLambdaFunction);
