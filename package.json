@@ -19,7 +19,7 @@
     "testdouble": "^2.0.3"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./**/*_spec.js"
+    "test": "mocha --compilers js:babel-core/register ./**/*.spec.js"
   },
   "author": "Phil Dobson",
   "license": "MIT"
