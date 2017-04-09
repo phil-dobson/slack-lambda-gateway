@@ -1,9 +1,23 @@
 language: node_js
 node_js:
-  - "6"
+  - '6'
 
 script:
-  - "npm test"
+  - 'npm test'
 
 after_success:
-  - "npm run coveralls"
+  - 'npm run coveralls'
+
+before_deploy:
+  - 'mkdir target'
+  - '(cd src && zip -r ../target/slack-lambda-gateway.zip *.js -x *.spec.js)'
+
+deploy:
+  provider: releases
+  api_key:
+    secure: xS9ExwnFtENwIE2QWicP7+yxnA0lVd1npmpVmiw8OoHKPZEEgGAz6QNLEnOF/cfsYgHAzU3BlbK9BlsDSw2zHAcCZTMWFrNLXOx4DdwCmDkGDoM4OyQSqHBdV5yW0Xm75pax4ZqToRYR6BxWnbxx+imFdjDKeYKrSrrsyqYuaA+KnxJkO0ffuRvJeBPaSejzjsDWznBpY9gxzkRjSwHhem16udOyqUMVYdD7qALfLJ7mzktpBGOl1XHSA9YOY/PNh6uRRw5AynL4+fObeNWOC0TM7op9pdWGGMFD1yiR2gqDtwiRtQ8NqMJsWF295qQFD9R0hlChwr7VbvO0ZEEacQCtbhx0j5Z96EIWJazJW4e1+7iqI82U79J7sUDfHq6W1L9Aepq66SKqheeTw83ZDu0Z/dgr5XIeo/6MYIXxKD9xkKA9GL+JdVcyEktzsLaxKnQv/W/ueWLdNCyhbUIPTQ4cse11QEzhar0PImo5JuKp5dnx68Y363lRLi/UFj5a/H8SIb7fRrVuYfUiJLrHXoMe1Zbghg2WUFDTjy7BBdUixB04xeERaz46coAKyBDcc8ocBX2iYI20YDcWJun1jOAXT2oboBThr0Houxj0cfnbRS9eXVq+rBPx1e0Ons3Tpqf1m3pPbbpYpamIdEeKf1+OEvS1H+VuHD44HF4xTOQ=
+  file: "./target/slack-lambda-gateway.zip"
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: phil-dobson/slack-lambda-gateway
