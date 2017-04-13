@@ -38,4 +38,8 @@ describe("Default handler for AWS Lambda", function () {
         //then:
         td.verify(mockHandler.handle(event, context, callback));
     });
+
+    afterEach(function () {
+        td.reset();
+    });
 });
