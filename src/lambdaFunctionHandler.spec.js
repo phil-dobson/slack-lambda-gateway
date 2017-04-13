@@ -60,7 +60,7 @@ describe("Lambda Function Handler", function () {
 
         it("Happy path", function () {
             //when:
-            unit(event, context, callback);
+            unit.handle(event, context, callback);
 
             //then:
             const invokeExplanation = td.explain(MockAwslambdaConstructor.prototype.invoke);
@@ -81,7 +81,7 @@ describe("Lambda Function Handler", function () {
 
         it("Failed remote Lambda invocation", function () {
             //when:
-            unit(event, context, callback);
+            unit.handle(event, context, callback);
 
             //then:
             const invokeExplanation = td.explain(MockAwslambdaConstructor.prototype.invoke);
@@ -103,7 +103,7 @@ describe("Lambda Function Handler", function () {
             td.when(mockLambdaFunctionFactory.createFromPath(PATH)).thenThrow(ERROR);
 
             //when:
-            unit(event, context, callback);
+            unit.handle(event, context, callback);
 
             //then:
             td.verify(mockSlackResponder.respondWithFailureToSlack(undefined, ERROR, callback));
@@ -117,7 +117,7 @@ describe("Lambda Function Handler", function () {
             td.when(mockLambdaFunctionFactory.createFromPath(PATH)).thenReturn(mockLambdaFunction);
 
             //when:
-            unit(event, context, callback);
+            unit.handle(event, context, callback);
 
             //then:
             td.verify(mockSlackResponder.respondWithFailureToSlack(mockLambdaFunction, ERROR, callback));
@@ -132,7 +132,7 @@ describe("Lambda Function Handler", function () {
             td.when(MockAwslambdaConstructor.prototype.invoke(td.matchers.anything(), td.matchers.anything())).thenThrow(ERROR);
 
             //when:
-            unit(event, context, callback);
+            unit.handle(event, context, callback);
 
             //then:
             td.verify(mockSlackResponder.respondWithFailureToSlack(mockLambdaFunction, ERROR, callback));

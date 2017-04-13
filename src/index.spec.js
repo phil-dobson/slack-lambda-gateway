@@ -21,18 +21,21 @@
 // SOFTWARE.
 
 "use strict";
-const lambdaFunction = require("./LambdaFunction");
+const td = require("testdouble");
 
-module.exports.createFromPath = function (resourcePath) {
-    if (resourcePath == null) {
-        throw new Error("resourcePath was null");
-    }
-    if (resourcePath.startsWith("/")) {
-        resourcePath = resourcePath.substring(1, resourcePath.length);
-    }
-    const constituents = resourcePath.split('/');
-    if (constituents.length != 2) {
-        throw new Error(`Invalid resource [${resourcePath}]. Expecting format [region/function-name]`);
-    }
-    return new lambdaFunction(constituents[1], constituents[0]);
-};
+const event = td.object({});
+const context = td.object({});
+const callback = td.function();
+
+const mockHandler = td.replace("./lambdaFunctionHandler");
+const unit = require("./index");
+
+describe("Default handler for AWS Lambda", function () {
+    it("Delegates to the Lambda Function Handler", function () {
+        //when:
+        unit.handler(event, context, callback);
+
+        //then:
+        td.verify(mockHandler.handle(event, context, callback));
+    });
+});

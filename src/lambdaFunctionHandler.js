@@ -25,7 +25,7 @@ const aws = require("aws-sdk");
 const lambdaFunctionFactory = require("./lambdaFunctionFactory");
 const slackResponder = require("./slackResponder");
 
-function handle(event, context, callback) {
+module.exports.handle = function(event, context, callback) {
     var lambdaFunction;
     try {
         lambdaFunction = lambdaFunctionFactory.createFromPath(event.path);
@@ -48,6 +48,4 @@ function handle(event, context, callback) {
     } catch (error) {
         slackResponder.respondWithFailureToSlack(lambdaFunction, error, callback);
     }
-}
-
-module.exports = handle;
+};

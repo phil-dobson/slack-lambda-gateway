@@ -21,18 +21,5 @@
 // SOFTWARE.
 
 "use strict";
-const lambdaFunction = require("./LambdaFunction");
 
-module.exports.createFromPath = function (resourcePath) {
-    if (resourcePath == null) {
-        throw new Error("resourcePath was null");
-    }
-    if (resourcePath.startsWith("/")) {
-        resourcePath = resourcePath.substring(1, resourcePath.length);
-    }
-    const constituents = resourcePath.split('/');
-    if (constituents.length != 2) {
-        throw new Error(`Invalid resource [${resourcePath}]. Expecting format [region/function-name]`);
-    }
-    return new lambdaFunction(constituents[1], constituents[0]);
-};
+module.exports.handler = require("./lambdaFunctionHandler").handle;
