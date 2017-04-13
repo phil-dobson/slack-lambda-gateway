@@ -13,4 +13,5 @@ The endpoint should have the path `region/foo-function`, e.g. `eu-west-1/hello-w
 It also must have 'Lambda Proxy Integration' enabled.
 
 ## Deployment
-This function must be zipped and deployed as a package.
+The JS files must be zipped and deployed to AWS Lambda as a package.</ br>
+Unless you require modification, it is recommended that you download the latest release ZIP from GitHub.
